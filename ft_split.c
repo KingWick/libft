@@ -5,77 +5,95 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: akdjebal <akdjebal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/12 20:44:28 by akdjebal          #+#    #+#             */
-/*   Updated: 2022/05/05 20:25:33 by akdjebal         ###   ########.fr       */
+/*   Created: 2022/05/05 20:59:41 by akdjebal          #+#    #+#             */
+/*   Updated: 2022/05/05 20:59:50 by akdjebal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
-static int	ft_comptword(const char *str, char c)
+int	ft_in_charset(char c, char *charset)
 {
-	int	nbrmot;
 	int	i;
 
 	i = 0;
-	nbrmot = 0;
+	while (charset[i])
+	{
+		if (c == charset[i])
+			return (1);
+		i++;
+	}
+	return (0);
+}
+
+int	ft_check_nbr(char *str, char *charset)
+{
+	int	i;
+	int	nbr;
+
+	i = 0;
+	nbr = 0;
 	while (str[i])
 	{
-		while (str[i] && str[i] == c)
-			i++;
-		if (str[i] && str[i] != c)
-		{
-			nbrmot++;
-			while (str[i] && str[i] != c)
-				i++;
-		}
+		if (!ft_in_charset(str[i], charset)
+			&& (ft_in_charset(str[i + 1], charset)
+				|| !str[i + 1]))
+			nbr++;
+		i++;
 	}
-	return (nbrmot);
+	return (nbr);
 }
 
-static char	*ft_strndup(const char *str, char c)
+int	ft_len(char *str, char *charset)
 {
 	int	i;
-	char	*s;
 
-	i = 0;
-	while (str[i] && str[i] != c)
-		i++;
-	if (!(s = (char *)malloc(sizeof(char) * (i + 1))))
-		return (0);
-	i = 0;
-	while (str[i] && str[i] != c)
+	i = 1;
+	while (str[i])
 	{
-		s[i] = str[i];
+		if (ft_in_charset(str[i], charset))
+			return (i);
 		i++;
 	}
-	s[i] = '\0';
-	return (s);
+	return (i);
 }
 
-char		**ft_split(char const *s, char c)
+void	ft_splitnwrite(char **dest, char *str, char *charset, int nbr)
 {
-	char**tab;
-	int i;
-	int k;
+	int		i;
+	int		j;
+	int		len;
+	char	*temp;
 
-	k = 0;
 	i = 0;
-	if (!s || !(tab = (char **)malloc(sizeof(char *)
-		* (ft_comptword(s, c) + 1))))
-		return (0);
-	while (s[i])
+	while (i < nbr)
 	{
-		while (s[i] == c)
-			i++;
-		if (s[i] && s[i] != c)
+		while (ft_in_charset(*str, charset))
+			str++;
+		if (!ft_in_charset(*str, charset))
 		{
-			tab[k] = ft_strndup(s + i, c);
-			k++;
+			len = ft_len(str, charset);
+			temp = (char *)malloc(sizeof(char) * len + 1);
+			j = -1;
+			while (++j < len)
+			{
+				temp[j] = *str;
+				str++;
+			}
+			dest[i] = temp;
 		}
-		while (s[i] && s[i] != c)
-			i++;
+		i++;
 	}
-	tab[k] = 0;
-	return (tab);
+	dest[i] = '\0';
+}
+
+char	**ft_split(char *str, char *charset)
+{
+	char	**dest;
+	int		nbr;
+
+	nbr = ft_check_nbr(str, charset);
+	dest = (char **) malloc(sizeof(char *) * (nbr + 1));
+	if (!dest)
+		return (0);
+	ft_splitnwrite(dest, str, charset, nbr);
+	return (dest);
 }

@@ -6,7 +6,7 @@
 /*   By: akdjebal <akdjebal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/11 02:47:52 by akdjebal          #+#    #+#             */
-/*   Updated: 2022/05/04 20:24:31 by akdjebal         ###   ########.fr       */
+/*   Updated: 2022/05/05 21:30:55 by akdjebal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,11 @@
 # include <stdlib.h>
 # include <unistd.h>
 
-typedef struct	s_list
+typedef struct s_list
 {
 	void			*content;
 	struct s_list	*next;
-}				t_list;
+}			t_list;
 
 int				ft_atoi(const char *str);
 void			ft_bzero(void *s, size_t n);

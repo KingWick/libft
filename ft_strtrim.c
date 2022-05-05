@@ -6,7 +6,7 @@
 /*   By: akdjebal <akdjebal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/07 15:16:25 by akdjebal          #+#    #+#             */
-/*   Updated: 2020/01/11 02:44:09 by akdjebal         ###   ########.fr       */
+/*   Updated: 2022/05/05 21:24:20 by akdjebal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static int	strverif(const char c, const char *str)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (str[i])
@@ -27,7 +27,7 @@ static int	strverif(const char c, const char *str)
 	return (0);
 }
 
-char		*ft_strtrim(char const *str, char const *set)
+char	*ft_strtrim(char const *str, char const *set)
 {
 	int		i;
 	int		j;
@@ -46,7 +46,8 @@ char		*ft_strtrim(char const *str, char const *set)
 		return (ft_calloc(sizeof(char), 1));
 	while (strverif(str[j], set) == 1)
 		j--;
-	if (!(s = (char *)malloc(sizeof(char) * ((j + 1) - i) + 1)))
+	s = (char *)malloc(sizeof(char) * ((j + 1) - i) + 1);
+	if (s == NULL)
 		return (NULL);
 	x = 0;
 	while (i <= j)

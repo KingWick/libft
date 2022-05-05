@@ -6,34 +6,36 @@
 /*   By: akdjebal <akdjebal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/07 15:14:25 by akdjebal          #+#    #+#             */
-/*   Updated: 2022/05/05 18:40:11 by akdjebal         ###   ########.fr       */
+/*   Updated: 2022/05/05 21:08:42 by akdjebal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_atoi(const char *str)
+#include "libft.h"
+
+int	ft_atoi(const char *nptr)
 {
 	int	i;
-	int	mult;
+	int	minus;
 	int	result;
 
 	i = 0;
 	result = 0;
-	mult = 1;
-	while (str[i] == '\t' || str[i] == ' ' || str[i] == '\r' || str[i] == '\v'
-		|| str[i] == '\n' || str[i] == '\f')
-		i++;
-	if (str[i] == '+' || str[i] == '-')
+	minus = 1;
+	while (nptr[i] == ' ' || (nptr[i] >= 9 && nptr[i] <= 13))
+		i ++;
+	if (nptr[i] == '-' || nptr[i] == '+')
 	{
-		if (str[i] == '-')
-			mult = -1;
+		if (nptr[i] == '-')
+			minus *= -1;
 		i++;
 	}
-	while (str[i] >= '0' && str[i] <= '9')
+	while (nptr[i] >= '0' && nptr[i] <= '9')
 	{
-		result = result * 10 + (str[i] - '0');
+		result *= 10;
+		result += nptr[i] - 48;
 		i++;
 	}
-	return (result * mult);
+	return (result * minus);
 }

@@ -6,55 +6,65 @@
 /*   By: akdjebal <akdjebal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/02 18:55:21 by akdjebal          #+#    #+#             */
-/*   Updated: 2022/05/05 20:20:33 by akdjebal         ###   ########.fr       */
+/*   Updated: 2022/05/05 21:06:56 by akdjebal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	ft_count(int nb)
+static int	ft_countchar(int n)
 {
 	int	count;
 
-	count = 0;
-	if (nb < 0)
+	count = 1;
+	while (n > 9 || n < -9)
 	{
-		nb = nb * -1;
-		count++;
-	}
-	while (nb > 0)
-	{
-		nb = nb / 10;
-		count++;
+		count ++;
+		n = n / 10;
 	}
 	return (count);
 }
 
-char	*ft_itoa(int n)
+static int	ft_abs(int n)
 {
-	int	i;
-	char * str;
-
-	if (!(str = (char *)malloc(sizeof(char) * ft_count(n) + 1)))
-		return (NULL);
-	if (n == -2147483648)
-		return (ft_strdup("-2147483648"));
-	if (n == 0)
-		return (ft_strdup("0"));
-	i = ft_count(n);
-	str[i] = '\0';
-	i = i - 1;
-	if (n < 0)
-	{
-		n = n * -1;
-		str[0] = '-';
-	}
-	while (n > 0)
-	{
-		str[i] = (n % 10) + 48;
-		n = n / 10;
-		i = i - 1;
-	}
-	return (str);
+	if (n >= 0)
+		return (n);
+	else
+		return (-n);
 }
 
+static void	ft_calcul(int n, int i, char *result)
+{
+	while (n > 9 || n < -9)
+	{
+		result[i] = (char)((ft_abs(n % 10)) + 48);
+		n = n / 10;
+		i --;
+	}
+	result[i] = (char)(ft_abs(n) + 48);
+}
+
+char	*ft_itoa(int n)
+{
+	char	*result;
+	int		count;
+	int		i;
+
+	count = ft_countchar(n);
+	if (n < 0)
+		count ++;
+	i = count - 1;
+	result = (char *)malloc(sizeof(char) * (count + 1));
+	if (!result)
+		return (0);
+	result[count] = 0;
+	if (n < 0)
+		result[0] = '-';
+	if (n == -2147483648)
+	{
+		result[i--] = '8';
+		n = n / 10;
+	}
+	ft_calcul(n, i, result);
+	return (result);
+}

@@ -6,7 +6,7 @@
 /*   By: akdjebal <akdjebal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/05 17:48:32 by akdjebal          #+#    #+#             */
-/*   Updated: 2020/01/11 03:29:15 by akdjebal         ###   ########.fr       */
+/*   Updated: 2022/05/05 21:18:10 by akdjebal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	ft_strlen(const char *str)
 {
-	int i;
+	int	i;
 
 	if (!*str)
 		return (0);

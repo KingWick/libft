@@ -6,7 +6,7 @@
 /*   By: akdjebal <akdjebal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/09 10:39:15 by akdjebal          #+#    #+#             */
-/*   Updated: 2020/01/11 02:44:24 by akdjebal         ###   ########.fr       */
+/*   Updated: 2022/05/05 21:25:51 by akdjebal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,8 @@ char	*ft_substr(char const *str, unsigned int start, size_t len)
 
 	if (!str || !*str || start > ((unsigned int)ft_strlen(str) + 1) || len == 0)
 		return (ft_calloc(sizeof(char), 1));
-	if (!(str2 = (char *)malloc(sizeof(char) * len + 1)))
+	str2 = (char *)malloc(sizeof(char) * len + 1);
+	if (str2 == NULL)
 		return (NULL);
 	i = (size_t)start;
 	j = 0;
