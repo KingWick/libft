@@ -3,40 +3,58 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akdjebal <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: akdjebal <akdjebal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/05/12 15:38:55 by akdjebal          #+#    #+#             */
-/*   Updated: 2019/05/14 17:07:03 by akdjebal         ###   ########.fr       */
+/*   Created: 2019/12/02 18:55:21 by akdjebal          #+#    #+#             */
+/*   Updated: 2022/05/05 20:20:33 by akdjebal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char		*ft_itoa(int n)
+static int	ft_count(int nb)
 {
-	int		length;
-	int		sign;
-	char	*str;
+	int	count;
 
-	sign = n;
-	length = 1;
-	while (sign /= 10)
-		length++;
-	sign = n < 0 ? 1 : 0;
-	length = n < 0 ? length += 1 : length;
-	if (n == -2147483648)
-		return (str = ft_strdup("-2147483648"));
-	str = ft_strnew(length);
-	if (!str)
-		return (NULL);
-	if (sign)
-		str[0] = '-';
-	n = n < 0 ? n *= -1 : n;
-	while (--length >= sign)
+	count = 0;
+	if (nb < 0)
 	{
-		str[length] = (n >= 10) ? (n % 10) + 48 : n + 48;
-		n /= 10;
+		nb = nb * -1;
+		count++;
 	}
-	str[ft_strlen(str)] = '\0';
+	while (nb > 0)
+	{
+		nb = nb / 10;
+		count++;
+	}
+	return (count);
+}
+
+char	*ft_itoa(int n)
+{
+	int	i;
+	char * str;
+
+	if (!(str = (char *)malloc(sizeof(char) * ft_count(n) + 1)))
+		return (NULL);
+	if (n == -2147483648)
+		return (ft_strdup("-2147483648"));
+	if (n == 0)
+		return (ft_strdup("0"));
+	i = ft_count(n);
+	str[i] = '\0';
+	i = i - 1;
+	if (n < 0)
+	{
+		n = n * -1;
+		str[0] = '-';
+	}
+	while (n > 0)
+	{
+		str[i] = (n % 10) + 48;
+		n = n / 10;
+		i = i - 1;
+	}
 	return (str);
 }
+

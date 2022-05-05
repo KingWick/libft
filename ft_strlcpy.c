@@ -1,18 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
+/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: akdjebal <akdjebal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/09 11:39:44 by akdjebal          #+#    #+#             */
-/*   Updated: 2020/01/11 02:39:13 by akdjebal         ###   ########.fr       */
+/*   Created: 2019/11/12 18:32:13 by akdjebal          #+#    #+#             */
+/*   Updated: 2020/01/12 21:05:50 by akdjebal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putchar_fd(char c, int fd)
+size_t	ft_strlcpy(char *dst, const char *src, size_t n)
 {
-	write(fd, &c, 1);
+	size_t			nleft;
+	const char		*s;
+
+	s = src;
+	nleft = n;
+	if (!src)
+		return (0);
+	if (nleft != 0)
+	{
+		while (--nleft != 0)
+		{
+			if ((*dst++ = *src++) == '\0')
+				break ;
+		}
+	}
+	if (nleft == 0)
+	{
+		if (n != 0)
+			*dst = '\0';
+		while (*src++)
+			;
+	}
+	return (src - s - 1);
 }

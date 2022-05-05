@@ -3,30 +3,54 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akdjebal <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: akdjebal <akdjebal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/05/10 18:25:20 by akdjebal          #+#    #+#             */
-/*   Updated: 2019/05/12 17:33:25 by akdjebal         ###   ########.fr       */
+/*   Created: 2020/01/07 15:16:25 by akdjebal          #+#    #+#             */
+/*   Updated: 2020/01/11 02:44:09 by akdjebal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strtrim(char const *s)
+static int	strverif(const char c, const char *str)
 {
-	char const *str;
+	int i;
 
-	if (s == NULL)
-		return (NULL);
-	while (*s == ' ' || *s == '\n' || *s == '\t')
-		s++;
-	if (*s == '\0')
+	i = 0;
+	while (str[i])
 	{
-		return (ft_strnew(0));
+		if (str[i] != c)
+			i++;
+		else
+			return (1);
 	}
-	str = s + ft_strlen(s) - 1;
-	while (*str == ' ' || *str == '\n' || *str == '\t')
-		str--;
-	str = ft_strsub(s, 0, str - s + 1);
-	return ((char*)str);
+	return (0);
+}
+
+char		*ft_strtrim(char const *str, char const *set)
+{
+	int		i;
+	int		j;
+	int		x;
+	char	*s;
+
+	if (!str)
+		return (NULL);
+	if (set == 0)
+		return (ft_calloc(sizeof(char), 1));
+	i = 0;
+	j = ft_strlen(str) - 1;
+	while (strverif(str[i], set) == 1)
+		i++;
+	if (i == (int)ft_strlen(str))
+		return (ft_calloc(sizeof(char), 1));
+	while (strverif(str[j], set) == 1)
+		j--;
+	if (!(s = (char *)malloc(sizeof(char) * ((j + 1) - i) + 1)))
+		return (NULL);
+	x = 0;
+	while (i <= j)
+		s[x++] = str[i++];
+	s[x] = '\0';
+	return (s);
 }

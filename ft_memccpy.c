@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memccpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akdjebal <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: akdjebal <akdjebal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/29 18:49:29 by akdjebal          #+#    #+#             */
-/*   Updated: 2019/05/09 17:42:42 by akdjebal         ###   ########.fr       */
+/*   Created: 2020/01/07 15:24:42 by akdjebal          #+#    #+#             */
+/*   Updated: 2022/05/05 20:21:02 by akdjebal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@ void	*ft_memccpy(void *dest, const void *src, int c, size_t n)
 	{
 		i = 0;
 		cmp = (unsigned char)c;
-		dst = (unsigned char*)dest;
-		source = (unsigned char*)src;
+		dst = (unsigned char *)dest;
+		source = (unsigned char *)src;
 		while (i < n)
 		{
 			dst[i] = source[i];

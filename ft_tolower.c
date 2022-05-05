@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_tolower.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akdjebal <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: akdjebal <akdjebal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/05/03 19:39:15 by akdjebal          #+#    #+#             */
-/*   Updated: 2019/05/09 17:53:51 by akdjebal         ###   ########.fr       */
+/*   Created: 2019/11/05 21:59:48 by akdjebal          #+#    #+#             */
+/*   Updated: 2020/01/11 02:44:56 by akdjebal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,5 @@
 
 int	ft_tolower(int c)
 {
-	if (c >= 'A' && c <= 'Z')
-		return (c + 32);
-	return (c);
+	return ((c >= 65 && c <= 90) ? c = c + 32 : c);
 }

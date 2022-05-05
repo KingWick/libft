@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akdjebal <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: akdjebal <akdjebal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/30 16:56:26 by akdjebal          #+#    #+#             */
-/*   Updated: 2019/05/09 17:54:13 by akdjebal         ###   ########.fr       */
+/*   Created: 2022/05/04 19:45:16 by akdjebal          #+#    #+#             */
+/*   Updated: 2022/05/04 20:12:14 by akdjebal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strcpy(char *dest, const char *src)
+char	*ft_strcpy(char *dest, char *src)
 {
 	int	i;
 

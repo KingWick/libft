@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akdjebal <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: akdjebal <akdjebal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/05/01 15:11:50 by akdjebal          #+#    #+#             */
-/*   Updated: 2019/05/09 17:55:09 by akdjebal         ###   ########.fr       */
+/*   Created: 2019/12/04 16:35:15 by akdjebal          #+#    #+#             */
+/*   Updated: 2020/01/11 02:43:18 by akdjebal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char					*ft_strnstr(const char *h, const char *n, size_t len)
+char	*ft_strnstr(const char *h, const char *n, size_t len)
 {
 	unsigned int		i;
 	size_t				needle_len;

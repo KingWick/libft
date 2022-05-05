@@ -3,28 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akdjebal <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: akdjebal <akdjebal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/30 19:09:56 by akdjebal          #+#    #+#             */
-/*   Updated: 2019/05/09 17:48:18 by akdjebal         ###   ########.fr       */
+/*   Created: 2019/11/07 15:20:31 by akdjebal          #+#    #+#             */
+/*   Updated: 2020/01/12 17:23:48 by akdjebal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char		*ft_strchr(const char *s, int c)
+char	*ft_strchr(const char *s, int searchfirstcharac)
 {
-	char	tab;
-
-	tab = (char)c;
-	while (*s != '\0' && *s != tab)
-	{
+	while (*s != '\0' && *s != searchfirstcharac)
 		s++;
-	}
-	if (*s != tab)
-	{
-		return (NULL);
-	}
-	else
+	if (*s == searchfirstcharac)
 		return ((char*)s);
+	return (0);
 }
