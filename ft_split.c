@@ -6,9 +6,11 @@
 /*   By: akdjebal <akdjebal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 20:59:41 by akdjebal          #+#    #+#             */
-/*   Updated: 2022/05/05 20:59:50 by akdjebal         ###   ########.fr       */
+/*   Updated: 2022/05/05 21:40:57 by akdjebal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "libft.h"
 
 int	ft_in_charset(char c, char *charset)
 {

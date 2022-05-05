@@ -6,7 +6,7 @@
 /*   By: akdjebal <akdjebal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/04 16:35:15 by akdjebal          #+#    #+#             */
-/*   Updated: 2022/05/05 21:21:18 by akdjebal         ###   ########.fr       */
+/*   Updated: 2022/05/05 21:46:05 by akdjebal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ char	*ft_strnstr(const char *h, const char *n, size_t len)
 	i = 0;
 	needle_len = ft_strlen(n);
 	if (0 == needle_len)
-		return (char *);
+		return ((char *)h);
 	while (h[i] && (needle_len + i) <= len)
 	{
 		tab = 0;

@@ -6,7 +6,7 @@
 /*   By: akdjebal <akdjebal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/11 02:47:52 by akdjebal          #+#    #+#             */
-/*   Updated: 2022/05/05 21:30:55 by akdjebal         ###   ########.fr       */
+/*   Updated: 2022/05/05 21:51:45 by akdjebal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void			ft_putnbr(int nb);
 char			*ft_strcpy(char *dest, char *src);
 int				ft_putstr(char *str);
 void			ft_putstr_fd(char const *s, int fd);
-char			**ft_split(char const *s, char c);
+char			**ft_split(char *str, char *charset);
 void			ft_swap(int *a, int *b);
 char			*ft_strchr(const char *s, int searchfirstcharac);
 char			*ft_strdup(const char *str);
